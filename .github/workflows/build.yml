@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+
+    outputs:
+      build-status: ${{ steps.set_output.outputs.status }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Simular proceso de compilación
+        run: echo "Compilando el proyecto..."
+
+      - name: Establecer output de compilación
+        id: set_output
+        run: echo "status=success" >> $GITHUB_OUTPUT

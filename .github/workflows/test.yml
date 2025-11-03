@@ -1,0 +1,19 @@
+name: Tests
+
+on:
+  workflow_run:
+    workflows: ["Build"]
+    types:
+      - completed
+
+jobs:
+  run_tests:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Confirmación
+        run: echo "El workflow Build se completó correctamente. Ejecutando tests..."
+
+      - name: Simulación de tests
+        run: echo "Ejecutando tests simulados ✅"
